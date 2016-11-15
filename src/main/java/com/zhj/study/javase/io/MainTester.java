@@ -12,6 +12,7 @@ public class MainTester {
 	 */
 	public static void main(String[] args) {
 		System.out.println("用来测试IO");
+		System.out.println("家里添加的内容");
 	}
 
 }
