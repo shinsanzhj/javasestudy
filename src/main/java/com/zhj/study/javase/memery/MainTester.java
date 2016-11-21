@@ -16,7 +16,7 @@ public class MainTester {
 	}
 
 	// 测试方法栈
-	// JVM参数：-Xss1K【并没有报错，可能jdk6已经做了一些优化，如果要报错 则执行方法中被注释的两句】
+	// JVM参数：-Xss1K【并没有报错，可能 jdk6 已经做了一些优化，如果要报错 则执行方法中被注释的两句】
 	private static void testMethodStack() {
 		new Thread(new Runnable() {
 			
