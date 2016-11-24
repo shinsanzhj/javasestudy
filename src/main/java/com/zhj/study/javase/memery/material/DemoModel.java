@@ -29,4 +29,10 @@ public class DemoModel {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	@Override
+	protected void finalize() throws Throwable {
+		System.out.println("清理对象：" + this);
+		super.finalize();
+	}
 }

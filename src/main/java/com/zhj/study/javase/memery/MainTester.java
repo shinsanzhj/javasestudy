@@ -1,5 +1,7 @@
 package com.zhj.study.javase.memery;
 
+import java.lang.ref.PhantomReference;
+import java.lang.ref.ReferenceQueue;
 import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
 
@@ -11,9 +13,9 @@ public class MainTester {
 	public static void main(String[] args) {
 //		testMethodStack();
 //		testTLAB();
-//		testReference();
+		testReference();
 //		testMemaryAllocate();
-		testMinorGC();
+//		testMinorGC();
 	}
 
 	// 测试方法栈
@@ -64,20 +66,25 @@ public class MainTester {
 		DemoModel demoModel = new DemoModel();
 		// 软引用
 		SoftReference<DemoModel> softReference = new SoftReference<DemoModel>(new DemoModel());
-		softReference.get().setId("aaa");
-		System.out.println(softReference.get().getId());
-		System.out.println(softReference.get() == null);
+		System.out.println("软引用：" + softReference.get());
 		// 弱引用
 		WeakReference<DemoModel> weakReference = new WeakReference<DemoModel>(new DemoModel());
-		weakReference.get().setId("bbb");
-		System.out.println(weakReference.get().getId());
-		System.out.println(weakReference.get() == null);
+		System.out.println("弱引用：" + weakReference.get());
+		// 虚引用
+		ReferenceQueue<DemoModel> referenceQueue = new ReferenceQueue<DemoModel>();
+		PhantomReference<DemoModel> phantomReference = new PhantomReference<DemoModel>(new DemoModel(), referenceQueue);
+		System.out.println("虚引用：" + phantomReference.get());
+		System.out.println("虚引用：" + phantomReference.isEnqueued());
+		
 		// 手动调用GC
 		System.gc();
 		
-		System.out.println(softReference.isEnqueued());// false，如果空间不够 也会变成true
-		System.out.println(weakReference.isEnqueued());// flase
-		System.out.println(weakReference.get() == null);// true
+		System.out.println("软引用：" + softReference.get());// 对象
+		System.out.println("软引用：" + softReference.isEnqueued());// false，如果空间不够 也会变成true
+		System.out.println("弱引用：" + weakReference.get());// 
+		System.out.println("弱引用：" + weakReference.isEnqueued());// flase
+		System.out.println("虚引用：" + phantomReference.get());// true
+		System.out.println("虚引用：" + phantomReference.isEnqueued());// true
 	}
 	
 	// 测试内存分配情况
