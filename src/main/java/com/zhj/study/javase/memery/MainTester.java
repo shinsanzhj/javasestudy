@@ -13,7 +13,7 @@ public class MainTester {
 	public static void main(String[] args) {
 //		testMethodStack();
 //		testTLAB();
-		testReference();
+//		testReference();
 //		testMemaryAllocate();
 //		testMinorGC();
 	}
@@ -88,7 +88,8 @@ public class MainTester {
 	}
 	
 	// 测试内存分配情况
-	// 参数：-Xms20M -Xmn10M -Xmx20M -XX:SurvivorRatio=8 -XX:+UseParallelGC
+	// 参数：-Xms20M -Xmn10M -Xmx20M -XX:SurvivorRatio=8 -verbose:gc -XX:+PrintGCDetails -XX:+UseParallelGC
+	// 参数：-Xms20M -Xmn10M -Xmx20M -XX:InitialSurvivorRatio=8 -verbose:gc -XX:+PrintGCDetails -XX:+UseParallelGC
 	// 断点调试
 	// 查看命令：jstat -gcutil pid
 	private static void testMemaryAllocate() {
