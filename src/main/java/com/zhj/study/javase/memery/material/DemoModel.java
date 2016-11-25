@@ -32,7 +32,7 @@ public class DemoModel {
 	
 	@Override
 	protected void finalize() throws Throwable {
-		System.out.println("清理对象：" + this);
+		System.out.println("清理对象： " + this);
 		super.finalize();
 	}
 }
