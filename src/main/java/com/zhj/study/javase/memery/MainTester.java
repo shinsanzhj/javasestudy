@@ -7,10 +7,16 @@ import java.lang.ref.WeakReference;
 
 import com.zhj.study.javase.memery.material.DemoModel;
 import com.zhj.study.javase.memery.material.MBObject;
+import com.zhj.study.javase.memery.material.ObjectCreateDetail;
 
 public class MainTester {
 
 	public static void main(String[] args) {
+//		testJavaGC();
+		ObjectCreateDetail.print();
+	}
+	
+	private static void testJavaGC() {
 //		testMethodStack();
 //		testTLAB();
 //		testReference();
