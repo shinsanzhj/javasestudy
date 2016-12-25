@@ -28,12 +28,14 @@ public class ScrambleHongBao {
 		// 测试竞争
 		
 		Jedis jedis = new Jedis("127.0.0.1", 6379);
-		jedis.auth("081181001zhj");
+//		jedis.auth("081181001zhj");
+		jedis.scriptFlush();
 		System.out.println(jedis.ping());
-		System.out.println(jedis.scriptLoad("return {KEY[1], KEY[2], ARGV[1], ARVG[2]}"));
+		System.out.println(jedis.eval("return {KEYS[1], KEYS[2], ARGV[1], ARGV[2]}", 2, "aa", "bb", "cc", "dd"));
+//		System.out.println(jedis.scriptLoad("return {KEYS[1], KEYS[2], ARGV[1], ARGV[2]}"));
 		//f33a61072ca8d3e0cc4f6b7080602f4edbce9556
 		//f33a61072ca8d3e0cc4f6b7080602f4edbce9556
-		System.out.println(jedis.scriptExists("f33a61072ca8d3e0cc4f6b7080602f4edbce9556"));
+		System.out.println(jedis.scriptExists("c0d2d6f81be75d67523d7c8ac69a932fbe1aa4e2"));
 	}
 	
 	public static void initData(double totalMoney) {
