@@ -6,6 +6,7 @@ import java.util.List;
 import com.zhj.study.javase.generic.material.BaseDTO;
 import com.zhj.study.javase.generic.material.CatDTO;
 import com.zhj.study.javase.generic.material.GenericUtil;
+import com.zhj.study.javase.generic.material.NormalDTO;
 
 /**
  * 泛型相关
@@ -30,14 +31,17 @@ public class MainTester {
 //		System.out.println(list.get(0));
 //		System.out.println(list.get(1));
 		
-		List<?> list2 = null;
-		List<String> list3 = new ArrayList<String>();
-		list3.add("1");
-		list3.add("2");
+//		List<?> list2 = null;
+//		List<String> list3 = new ArrayList<String>();
+//		list3.add("1");
+//		list3.add("2");
+//		
+//		list2 = list3;
+//		System.out.println(list2.get(0));
+//		System.out.println(list2.get(1));
 		
-		list2 = list3;
-		System.out.println(list2.get(0));
-		System.out.println(list2.get(1));
+//		GenericUtil<CatDTO> util = new GenericUtil<CatDTO>();
+//		CatDTO dto = (CatDTO) util.getDTO();
 		
 	}
 	
