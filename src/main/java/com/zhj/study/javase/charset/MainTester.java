@@ -3,6 +3,7 @@ package com.zhj.study.javase.charset;
 public class MainTester {
 
 	public static void main(String[] args) throws Exception {
+//		
 //		printByteArr("严".getBytes("GBK"));
 //		printByteArr(new String("严".getBytes("GBK"), "ISO-8859-1").getBytes("ISO-8859-1"));
 //		printByteArr(new String("严".getBytes("GBK"), "UTF-8").getBytes("UTF-8"));
