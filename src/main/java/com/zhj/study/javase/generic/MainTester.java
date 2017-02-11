@@ -39,7 +39,6 @@ public class MainTester {
 		list2 = list3;
 		System.out.println(list2.get(0));
 		System.out.println(list2.get(1));
-		
 	}
 	
 }
