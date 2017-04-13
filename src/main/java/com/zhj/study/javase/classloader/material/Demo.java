@@ -28,7 +28,6 @@ public class Demo extends DemoParent {
 	
 	public static String staticDemoMethod() {
 		System.out.println("执行了staticDemoMethod方法");
-		name = "DEMO_AA";
-		return name;
+		return "DEMO_AA";
 	}
 }
