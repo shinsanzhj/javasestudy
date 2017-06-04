@@ -2,6 +2,12 @@ package com.zhj.study.designpattern.proxy;
 
 import java.lang.reflect.Proxy;
 
+import javassist.ClassPool;
+import javassist.CtClass;
+import javassist.CtMethod;
+import javassist.CtNewMethod;
+import javassist.NotFoundException;
+
 import net.sf.cglib.proxy.Enhancer;
 
 import com.zhj.study.designpattern.proxy.cglib.CglibWasherMethodInterceptor;
@@ -18,10 +24,11 @@ public class MainTester {
 	 * 2017-3-21	钟华杰	新建
 	 * </pre>
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 //		testNormalProxy();
 //		testJdkProxy();
-		testCglibProxy();
+//		testCglibProxy();
+		testJavassistProxy();
 	}
 
 	
@@ -42,5 +49,24 @@ public class MainTester {
 		enhancer.setCallback(new CglibWasherMethodInterceptor());
 		Washer washer = (Washer) enhancer.create();
 		washer.autoWash();
+	}
+	
+	private static void testJavassistProxy() throws Exception {
+		CtClass ctClass = ClassPool.getDefault().get("com.zhj.study.designpattern.proxy.HaierWasher");
+		String oldMethodName = "setWashStyle";
+		CtMethod oldMethod = ctClass.getDeclaredMethod(oldMethodName);
+		String newName = oldMethodName + "$impl";
+		oldMethod.setName(newName);
+		CtMethod newMethod = CtNewMethod.copy(oldMethod, oldMethodName, ctClass, null);
+		StringBuffer sb = new StringBuffer();
+		sb.append("{")
+			.append("System.out.println(\"哈哈哈哈\");")
+			.append(oldMethodName + "($$);")
+			.append("System.out.println(\"结束调用\");")
+			.append("}");
+		newMethod.setBody(sb.toString());
+		ctClass.addMethod(newMethod);
+		Washer washer = (Washer) ctClass.toClass().newInstance();
+		washer.setWashStyle("ssxx");
 	}
 }

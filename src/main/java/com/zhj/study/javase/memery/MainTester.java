@@ -12,13 +12,13 @@ import com.zhj.study.javase.memery.material.ObjectCreateDetail;
 public class MainTester {
 
 	public static void main(String[] args) {
-//		testJavaGC();
-		ObjectCreateDetail.print();
+		testJavaGC();
+//		ObjectCreateDetail.print();
 	}
 	
 	private static void testJavaGC() {
 //		testMethodStack();
-//		testTLAB();
+		testTLAB();
 //		testReference();
 //		testMemaryAllocate();
 //		testMinorGC();
@@ -30,7 +30,7 @@ public class MainTester {
 		
 		// 老年代GC
 //		testFullGC_SerialGC();
-		testFullGC_ParallelGC();
+//		testFullGC_ParallelGC();
 	}
 
 	// 测试方法栈
@@ -79,6 +79,7 @@ public class MainTester {
 	private static void testReference() {
 		// 强引用
 		DemoModel demoModel = new DemoModel();
+		System.out.println("demoModel:" + demoModel);
 		// 软引用
 		SoftReference<DemoModel> softReference = new SoftReference<DemoModel>(new DemoModel());
 		System.out.println("软引用：" + softReference.get());

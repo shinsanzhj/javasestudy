@@ -1,6 +1,7 @@
 package com.zhj.study.javase.classloader;
 
 import com.zhj.study.javase.classloader.material.Demo;
+import com.zhj.study.testclassnofund.DemoStatic;
 
 public class MainTester {
 
@@ -16,7 +17,12 @@ public class MainTester {
 //		showEvn();
 //		showAllClassLoader();
 //		testClassStatic();
-		testClassForName();
+//		testClassForName();
+		
+		com.zhj.study.testclassnofund.Demo demo = new com.zhj.study.testclassnofund.Demo();
+//		demo.useEhcacheClass();
+		
+		DemoStatic demo2 = new DemoStatic();
 	}
 	
 	//环境变量
@@ -51,6 +57,7 @@ public class MainTester {
 		System.out.println(Demo.name);
 		// 会执行实例代码块
 		Demo demo = new Demo();
+		Demo demo2 = new Demo();
 	}
 	
 	//测试Class.forName()相关内容
@@ -59,7 +66,7 @@ public class MainTester {
 		// false：静态变量不会被初始化、静态代码块不会被执行
 		try {
 			Class.forName("com.zhj.study.javase.classloader.material.Demo", true, MainTester.class.getClassLoader());
-			// 及时都为true，也不会执行两次静态代码块
+			// 即使都为true，也不会执行两次静态代码块
 			Class.forName("com.zhj.study.javase.classloader.material.Demo", true, MainTester.class.getClassLoader());
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

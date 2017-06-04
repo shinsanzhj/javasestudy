@@ -18,9 +18,12 @@ public class ThreadInterruptDemo {
 		InterruptTask target = new InterruptTask();
 		Thread thread = new Thread(target);
 		thread.start();
-		Thread.sleep(3000);
+		Thread.sleep(1000);
 		System.out.println("\t打断线程...");
 		thread.interrupt();
+		System.out.println("\tthread.isInterrupted:" + thread.isInterrupted());
+		Thread.sleep(3000);
+		System.out.println("\tthread.isInterrupted:" + thread.isInterrupted());
 	}
 
 	
@@ -43,14 +46,19 @@ public class ThreadInterruptDemo {
 	
 	private static class InterruptTask implements Runnable {
 		public void run() {
-			while(!Thread.currentThread().interrupted()) {
+			while(true) {
+//			while(!Thread.currentThread().interrupted()) {
 				try {
 					System.out.println("线程准备睡2秒...");
 					Thread.sleep(2000);
 				} catch (InterruptedException e) {
-					System.out.println("线程被中断了...");
+					long currentTime = System.currentTimeMillis();
+					while(System.currentTimeMillis() - currentTime < 2000) {
+						
+					}
+					System.out.println("线程被中断了...:" + Thread.currentThread().interrupted());
 //					e.printStackTrace();
-					break;
+//					break;
 				}
 				System.out.println("线程醒来了...准备执行2秒的业务逻辑操作...");
 				long currentTime = System.currentTimeMillis();
@@ -58,7 +66,7 @@ public class ThreadInterruptDemo {
 					
 				}
 			}
-			System.out.println("线程执行完毕...");
+//			System.out.println("线程执行完毕...");
 		}
 	}
 }
