@@ -44,6 +44,19 @@ public class MainTester {
 		System.out.println(arr2.getClass().getName());//[I
 		System.out.println(arr2.getClass().getComponentType().getName());//int
 		
+		Integer[] arr21 = new Integer[3];
+		arr21[0] = 1;
+		arr21[1] = 1;
+		arr21[2] = 1;
+		System.out.println(arr21.getClass().getName());//[Ljava.lang.Integer;
+		System.out.println(arr21.getClass().getComponentType().getName());//java.lang.Integer
+		
+		double[] arr22 = new double[3];
+		arr22[0] = 1;
+		arr22[1] = 1;
+		arr22[2] = 1;
+		System.out.println(arr22.getClass().getName());//[D
+		System.out.println(arr22.getClass().getComponentType().getName());//double
 		
 		Object[] arr3 = new Object[3];
 		arr3[0] = new Button();

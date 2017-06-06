@@ -21,8 +21,8 @@ public class MainTester {
 		
 		GenericUtil util = new GenericUtil<CatDTO>();
 		CatDTO dtoo = GenericUtil.initDTO(new CatDTO());
-		System.out.println(dtoo.getName());
 		System.out.println(dtoo.getId());
+		System.out.println(dtoo.getName());
 		
 //		List list = new ArrayList();
 //		list.add("zhj");
@@ -39,6 +39,12 @@ public class MainTester {
 		list2 = list3;
 		System.out.println(list2.get(0));
 		System.out.println(list2.get(1));
+	}
+	
+	private class GernericObj<A> {
+		private <A> A get(Class<?> obj) {
+			return (A) new Object();
+		}
 	}
 	
 }

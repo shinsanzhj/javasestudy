@@ -90,7 +90,10 @@ public class NIOFileServer {
 		while(true) {
 			try {
 				while(true) {
-					selector.select();
+					System.out.println("调用select");
+					selector.select();// 阻塞
+//					selector.select(3000); // 在超时时间内阻塞
+//					selector.selectNow(); // 非阻塞
 					Iterator<SelectionKey> it = selector.selectedKeys().iterator();
 					while(it.hasNext()) {
 						SelectionKey key = it.next();

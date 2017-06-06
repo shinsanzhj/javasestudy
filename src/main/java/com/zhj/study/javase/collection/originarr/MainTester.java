@@ -37,13 +37,13 @@ public class MainTester {
 		btns[0] = new Button(1);
 		btns[1] = new Button(2);
 		btns[2] = new Button(3);
-		Button[] newArr = Arrays.copyOf(btns, 0);
+		Button[] newArr = Arrays.copyOf(btns, 4);
 		
 		System.out.println(btns);
 		System.out.println(newArr);
 		System.out.println(btns.length);
 		System.out.println(newArr.length);
 //		System.out.println(btns[0]);
-//		System.out.println(newArr[0]);
+		System.out.println(newArr[3]);
 	}
 }
