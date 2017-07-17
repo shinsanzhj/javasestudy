@@ -110,9 +110,9 @@ public class MainTester {
 	 * </pre>
 	 */
 	public static void main(String[] args) throws Exception {
-//		testReadFileMap();
+		testReadFileMap();
 //		testWriteFileMap();
-		testReadFilePerformance_Nio_Normal();
+//		testReadFilePerformance_Nio_Normal();
 //		testReadFilePerformance_Nio_Map();
 //		testReadFilePerformance_Nio_Normal_DirectMemery();
 	}
